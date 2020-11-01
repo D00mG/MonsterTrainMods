@@ -30,46 +30,55 @@ namespace GraveshackledClan_Main
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
-                            new CardEffectDataBuilder
+                            TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
                             {
-                                EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                ParamStatusEffects = new StatusEffectStackData[]
+                                new CharacterTriggerDataBuilder
                                 {
-                                    new StatusEffectStackData
+                                    Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
+                                    Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>",
+                                    EffectBuilders = new List<CardEffectDataBuilder>
                                     {
-                                        statusId = VanillaStatusEffectIDs.Fuel,
-                                        count = 2
+                                        new CardEffectDataBuilder
+                                                                    {
+                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
+                                                                        TargetMode = TargetMode.Self,
+                                                                        TargetTeamType = Team.Type.Monsters,
+                                                                        ParamStatusEffects = new StatusEffectStackData[]
+                                                                            {
+                                                                                new StatusEffectStackData
+                                                                                    {
+                                                                                        count = 1,
+                                                                                        statusId = VanillaStatusEffectIDs.Soul
+                                                                                    }
+                                                                            }
+                                                                    }
                                     }
                                 },
-                            TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
+                                new CharacterTriggerDataBuilder
                                 {
-                                    new CharacterTriggerDataBuilder
+                                    Trigger = CharacterTriggerData.Trigger.OnFeed,
+                                    EffectBuilders = new List<CardEffectDataBuilder>
                                     {
-                                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>",
-                                        EffectBuilders = new List<CardEffectDataBuilder>
-                                        {
-                                            new CardEffectDataBuilder
-                                            {
-                                                EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                TargetMode = TargetMode.Self,
-                                                TargetTeamType = Team.Type.Monsters,
-                                                ParamStatusEffects = new StatusEffectStackData[]
-                                                    {
-                                                         new StatusEffectStackData
-                                                        {
-                                                            count = 1,
-                                                            statusId = VanillaStatusEffectIDs.Soul
-                                                        }
-                                                    }
-                                            }
-                                        }
+                                        new CardEffectDataBuilder
+                                                                    {
+                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
+                                                                        TargetMode = TargetMode.Self,
+                                                                        TargetTeamType = Team.Type.Monsters,
+                                                                        ParamStatusEffects = new StatusEffectStackData[]
+                                                                            {
+                                                                                new StatusEffectStackData
+                                                                                    {
+                                                                                        count = 1,
+                                                                                        statusId = VanillaStatusEffectIDs.Fuel
+                                                                                    },
+                                                                            }
+                                                                    }
                                     }
                                 }
                             }
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             };
 
             return railtie;
