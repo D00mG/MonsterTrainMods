@@ -15,7 +15,7 @@ namespace GraveshackledClan_Main
             ClanGraveshackled.Make();
             SubtypeGraveshackledRevenant.RegisterSubtypes();
             RelicGraveshackledDisplacementLantern.Make();
-            UnitGraveshackledChampion_Inevitable.Make();
+            ChampionGraveshackled_Inevitable.Make();
             SpellGraveshackledBloodHarvest.Make();
             UnitGraveshackledCharnelSlab.Make();
             RewardNodeGraveshackled.Make();
@@ -44,5 +44,38 @@ namespace GraveshackledClan_Main
         //        __instance.AddRelic(CustomCollectableRelicManager.GetRelicDataByID("RelicGraveshackledDisplacementLantern_ID"));
         //    }
         //}
+
+        // Logbook set up I think?
+        //[HarmonyPatch(typeof(MetagameSaveData), "HasDiscoveredCard", new Type[] { typeof(CardData) })]
+        //class ShowAllLogbookCardsPatch
+        //{
+        //    static bool Prefix(ref bool __result)
+        //    {
+        //        __result = true;
+        //        return false;
+        //    }
+        //}
+
+        //[HarmonyPatch(typeof(MetagameSaveData), "HasDiscoveredCard", new Type[] { typeof(string) })]
+        //class ShowAllLogbookCardsPatch2
+        //{
+        //    static bool Prefix(ref bool __result)
+        //    {
+        //        __result = true;
+        //        return false;
+        //    }
+        //}
+
+        // Register Relics to the Logbook
+        //[HarmonyPatch(typeof(CompendiumRelicUI), "SetLocked")]
+        //class RevealAllRelics
+        //{
+        //    // Creates and registers card data for each card class
+        //    static bool Prefix(CompendiumRelicUI __instance)
+        //    {
+        //        return false;
+        //    }
+        //}
+
     }
 }

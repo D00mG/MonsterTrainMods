@@ -26,18 +26,51 @@ namespace GraveshackledClan_Main
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.PostCombat,
+                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
+                        DescriptionKey = IDName + "_Desc",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                                    {
+                                        new CardEffectDataBuilder
+                                        {
+                                            EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
+                                            TargetMode = TargetMode.Self,
+                                            TargetTeamType = Team.Type.Monsters,
+                                            ParamStatusEffects = new StatusEffectStackData[]
+                                            {
+                                                new StatusEffectStackData
+                                                {
+                                                    count = 1,
+                                                    statusId = VanillaStatusEffectIDs.Soul
+                                                }
+                                            }
+                                        },
+                                        new CardEffectDataBuilder
+                                        {
+                                            EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
+                                            TargetMode = TargetMode.Self,
+                                            ParamInt = 4,
+                                            TargetTeamType = Team.Type.Monsters
+                                        }
+                                    }
+                    },
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnHit,
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                        ParamStatusEffects = new StatusEffectStackData[]
+                            new CardEffectDataBuilder
                             {
-                                new StatusEffectStackData
+                                EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Heroes,
+                                // UseStatusEffectStackMultiplier = true,
+                                // StatusEffectStackMultiplier = VanillaStatusEffectIDs.Soul,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData
                                     {
-                                        statusId = VanillaStatusEffectIDs.Spikes,
+                                        statusId = VanillaStatusEffectIDs.Sap,
                                         count = 2
                                     }
                             }

@@ -14,6 +14,7 @@ namespace GraveshackledClan_Main
         {
             CardPool cardPool = UnityEngine.ScriptableObject.CreateInstance<CardPool>();
             var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(cardPool);
+            // Starter cards don't work here.
             cardDataList.Add(CustomCardManager.GetCardDataByID("SpellGraveshackledBloodHarvest_ID"));
             cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledCharnelSlab_ID"));
 

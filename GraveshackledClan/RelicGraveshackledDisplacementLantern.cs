@@ -14,7 +14,7 @@ namespace GraveshackledClan_Main
             {
                 CollectableRelicID = "RelicGraveshackledDisplacementLantern_ID",
                 Name = "Displacement Lantern",
-                Description = "Add +1 stack of Stealth whenever it is applied (Temporarily adds on monster spawn).",
+                Description = "Add +1 stack of Stealth whenever it is applied.",
                 ClanID = "GraveshackledClanDefine_ID",
                 RelicPoolIDs = new List<string> 
                     { 
@@ -23,19 +23,36 @@ namespace GraveshackledClan_Main
                 IconPath = "assets/RelicArt/img_relic_DisplacementLantern.png",
                 EffectBuilders = new List<RelicEffectDataBuilder>
             {
+                //new RelicEffectDataBuilder
+                //    {
+                //        RelicEffectClassName = "RelicEffectAddStatusEffectOnSpawn",
+                //        ParamInt = 1,
+                //        ParamTrigger = CharacterTriggerData.Trigger.OnSpawn,
+                //        ParamTargetMode = TargetMode.Room,
+                //        ParamSourceTeam = Team.Type.Monsters,
+                //        ParamCharacterSubtype = "SubtypesData_None",
+                //        ParamStatusEffects = new StatusEffectStackData[] 
+                //            { 
+                //                new StatusEffectStackData 
+                //                    { 
+                //                        statusId = VanillaStatusEffectIDs.Stealth, count = 1 
+                //                    } 
+                //            },
+                //    },
                 new RelicEffectDataBuilder
                     {
-                        RelicEffectClassName = "RelicEffectAddStatusEffectOnSpawn",
+                        RelicEffectClassName = "RelicEffectAddStatusEffectOnStatusApplied",
                         ParamInt = 1,
-                        ParamTrigger = CharacterTriggerData.Trigger.OnSpawn,
+                        // ParamTrigger = CharacterTriggerData.Trigger.OnStatusApplied,
                         ParamTargetMode = TargetMode.Room,
                         ParamSourceTeam = Team.Type.Monsters,
-                        ParamStatusEffects = new StatusEffectStackData[] 
-                            { 
-                                new StatusEffectStackData 
-                                    { 
-                                        statusId = VanillaStatusEffectIDs.Stealth, count = 1 
-                                    } 
+                        ParamCharacterSubtype = "SubtypesData_None",
+                        ParamStatusEffects = new StatusEffectStackData[]
+                            {
+                                new StatusEffectStackData
+                                    {
+                                        statusId = VanillaStatusEffectIDs.Stealth, count = 1
+                                    }
                             },
                     }
 
