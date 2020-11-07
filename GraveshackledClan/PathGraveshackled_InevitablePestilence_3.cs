@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitleKey = IDName + "_Name",
+                UpgradeTitle = "Herald of Pestilence III",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 5,
@@ -44,13 +44,6 @@ namespace GraveshackledClan_Main
                                                 }
                                             }
                                         },
-                                        new CardEffectDataBuilder
-                                        {
-                                            EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
-                                            TargetMode = TargetMode.Self,
-                                            ParamInt = 4,
-                                            TargetTeamType = Team.Type.Monsters
-                                        }
                                     }
                     },
                     new CharacterTriggerDataBuilder

@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitleKey = IDName + "_Name",
+                UpgradeTitle = "Herald of War",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 5,
@@ -27,7 +27,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                        DescriptionKey = IDName + "_Desc",
+                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>. Gain +<nobr>{[effect1.power]}<sprite name=\"Attack\"></nobr>.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                                     {
                                         new CardEffectDataBuilder
@@ -48,7 +48,6 @@ namespace GraveshackledClan_Main
                                         {
                                             EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
                                             TargetMode = TargetMode.Self,
-                                            // ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                                             ParamInt = 2,
                                             TargetTeamType = Team.Type.Monsters
                                         }

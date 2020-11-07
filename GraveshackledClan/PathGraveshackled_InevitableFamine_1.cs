@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitleKey = IDName + "_Name",
+                UpgradeTitle = "Herald of Famine",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 10,
@@ -26,37 +26,8 @@ namespace GraveshackledClan_Main
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                        DescriptionKey = IDName + "_Desc",
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                                    {
-                                        new CardEffectDataBuilder
-                                        {
-                                            EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                            TargetMode = TargetMode.Self,
-                                            TargetTeamType = Team.Type.Monsters,
-                                            ParamStatusEffects = new StatusEffectStackData[]
-                                            {
-                                                new StatusEffectStackData
-                                                {
-                                                    count = 1,
-                                                    statusId = VanillaStatusEffectIDs.Soul
-                                                }
-                                            }
-                                        },
-                                        new CardEffectDataBuilder
-                                        {
-                                            EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
-                                            TargetMode = TargetMode.Self,
-                                            ParamInt = 4,
-                                            TargetTeamType = Team.Type.Monsters
-                                        }
-                                    }
-                    },
-                    new CharacterTriggerDataBuilder
-                    {
                         Trigger = CharacterTriggerData.Trigger.OnHit,
-                        DescriptionKey = IDName + "_Desc",
+                        Description = "Apply <nobr><b>Sap {[effect0.status0.power]}</b></nobr> to enemy units.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
@@ -64,8 +35,6 @@ namespace GraveshackledClan_Main
                                 EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
                                 TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Heroes,
-                                // UseStatusEffectStackMultiplier = true,
-                                // StatusEffectStackMultiplier = VanillaStatusEffectIDs.Soul,
                                 ParamStatusEffects = new StatusEffectStackData[]
                                 {
                                     new StatusEffectStackData

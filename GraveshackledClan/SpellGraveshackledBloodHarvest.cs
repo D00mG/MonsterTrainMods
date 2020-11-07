@@ -17,7 +17,7 @@ namespace GraveshackledClan_Main
                 Cost = 1,
                 CardID = "SpellGraveshackledBloodHarvest_ID",
                 Name = "Blood Harvest",
-                Description = "Restore 3 health and apply Fuel 2 to friendly units and deal 3 damage to enemy units.",
+                Description = "Restore [effect0.power] health and apply <nobr><b>Fuel</b> <b>{[effect2.status0.power]}</b></nobr> to friendly units. Deal [effect1.power] damage to enemy units.",
                 AssetPath = "assets/CardArt/img_spell_blood_harvest.png",
                 Rarity = CollectableRarity.Common,
                 ClanID = "GraveshackledClanDefine_ID",

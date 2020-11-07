@@ -27,7 +27,7 @@ namespace GraveshackledClan_Main
             {
                 Champion = championCharacterBuilder,
                 ChampionIconPath = "assets/UnitArt/img_icon_inevitable.png",
-                StarterCardData = CustomCardManager.GetCardDataByID(VanillaCardIDs.Torch),
+                StarterCardData = CustomCardManager.GetCardDataByID("SpellGraveshackledBloodHarvest_ID"),
                 CardID = "CardGravshackledChampionInevitable_ID",
                 Name = "Inevitable",
                 ClanID = "GraveshackledClanDefine_ID",

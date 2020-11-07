@@ -20,7 +20,9 @@ namespace GraveshackledClan_Main
                 Name = "Graveshackled Clan",
                 Description = "Raise the restless dead of the Graveshackled Clan. Draw sustenance from your enemy's forces and defeat them with afflictions and trickery.",
                 SubclassDescription = "Ally with sturdy Revenants and etherial Phantasms of the Graveshackled Clan.",
-                CardStyle = ClassCardStyle.Stygian,
+                DraftIconPath = "assets/ClanArt/img_clan_graveshackled_cardback.png",
+                CardFrameUnitPath = "assets/CardArt/cardframeGraveshackledUnit.png",
+                CardFrameSpellPath = "assets/CardArt/cardframeGraveshackledSpell.png",
                 IconAssetPaths = new List<string>
                     {
                         "assets/ClanArt/img_clan_graveshackled_small.png",

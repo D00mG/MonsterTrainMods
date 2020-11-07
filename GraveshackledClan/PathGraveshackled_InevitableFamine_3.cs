@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitleKey = IDName + "_Name",
+                UpgradeTitle = "Herald of Famine III",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 10,

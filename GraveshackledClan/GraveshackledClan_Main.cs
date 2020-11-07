@@ -15,9 +15,9 @@ namespace GraveshackledClan_Main
             ClanGraveshackled.Make();
             SubtypeGraveshackledRevenant.RegisterSubtypes();
             RelicGraveshackledDisplacementLantern.Make();
-            ChampionGraveshackled_Inevitable.Make();
             SpellGraveshackledBloodHarvest.Make();
             UnitGraveshackledCharnelSlab.Make();
+            ChampionGraveshackled_Inevitable.Make();
             RewardNodeGraveshackled.Make();
         }
         void Awake()

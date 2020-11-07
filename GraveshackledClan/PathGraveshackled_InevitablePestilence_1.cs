@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitleKey = IDName + "_Name",
+                UpgradeTitle = "Herald of Pestilence",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 0,
@@ -27,7 +27,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                        DescriptionKey = IDName + "_Desc",
+                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                                     {
                                         new CardEffectDataBuilder
@@ -44,19 +44,12 @@ namespace GraveshackledClan_Main
                                                 }
                                             }
                                         },
-                                        new CardEffectDataBuilder
-                                        {
-                                            EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
-                                            TargetMode = TargetMode.Self,
-                                            ParamInt = 4,
-                                            TargetTeamType = Team.Type.Monsters
-                                        }
                                     }
                     },
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnHit,
-                        DescriptionKey = IDName + "_Desc",
+                        Description = "Apply <nobr><b>Frostbite {[effect0.status0.power]}</b></nobr> per Soul to enemy units.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
