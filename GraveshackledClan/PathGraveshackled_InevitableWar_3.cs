@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitle = "Herald of War III",
+                UpgradeTitleKey = IDName + "_Title",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 15,
@@ -27,7 +27,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                        DescriptionKey = IDName + "_Desc",
+                        // Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>. Gain +<nobr>{[effect1.power]}<sprite name=\"Attack\"></nobr>.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                                     {
                                         new CardEffectDataBuilder
@@ -56,13 +56,13 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnDeath,
-                        DescriptionKey = IDName + "_Desc",
+                        // Description = "Deal damage to the enemy units equal to <nobr>[effect0.power]x</nobr> the Soul count.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                     EffectStateType = VanillaCardEffectTypes.CardEffectDamage,
-                                    TargetMode = TargetMode.FrontInRoom,
+                                    TargetMode = TargetMode.Room,
                                     TargetTeamType = Team.Type.Heroes,
                                     UseStatusEffectStackMultiplier = true,
                                     StatusEffectStackMultiplier = VanillaStatusEffectIDs.Soul,
