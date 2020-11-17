@@ -9,13 +9,13 @@ using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace GraveshackledClan_Main
 {
-    class UnitGraveshackledCharnelSlab
+    class UnitGraveshackledVileFigment
     {
         public static void Make()
         {
-            CardDataBuilder cardcharnelslab = new CardDataBuilder
+            CardDataBuilder cardvilefigment = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 2,
                 Rarity = CollectableRarity.Common,
                 CardType = CardType.Monster,
                 ClanID = "GraveshackledClanDefine_ID",
@@ -25,9 +25,9 @@ namespace GraveshackledClan_Main
 //                        VanillaCardPoolIDs.MegaPool,
 // Replace this second MegaPool with the Clan Pool once it is made
                     },
-                CardID = "CardGraveshackledCharnelSlab_ID",
-                Name = "Charnel Slab",
-                AssetPath = "assets/CardArt/img_unit_charnel_slab.png",
+                CardID = "CardGraveshackledVileFigment_ID",
+                Name = "Vile Figment",
+                AssetPath = "assets/CardArt/img_unit_vile_figment.png",
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -38,30 +38,34 @@ namespace GraveshackledClan_Main
                                 TargetMode = TargetMode.DropTargetCharacter,
                                 ParamCharacterDataBuilder = new CharacterDataBuilder
                                     {
-                                        CharacterID = "UnitGraveshackledCharnelSlab_ID",
-                                        Name = "Charnel Slab",
-                                        SubtypeKeys = new List<string> { SubtypeGraveshackledRevenant.Key },
-                                        Size = 1,
-                                        Health = 20,
-                                        AttackDamage = 5,
-                                        AssetPath = "assets/UnitArt/img_character_CharnelSlab.png",
+                                        CharacterID = "UnitGraveshackledVileFigment_ID",
+                                        Name = "Vile Figment",
+                                        SubtypeKeys = new List<string> { SubtypeGraveshackledPhantasm.Key },
+                                        Size = 2,
+                                        Health = 5,
+                                        AttackDamage = 1,
+                                        AssetPath = "assets/UnitArt/img_character_VileFigment.png",
                                         StartingStatusEffects = new StatusEffectStackData[]
                                             {
                                                 new StatusEffectStackData
                                                     {
-                                                        count = 1, statusId = "inert"
+                                                        count = 2, statusId = "stealth"
                                                     },
                                                 new StatusEffectStackData
                                                     {
-                                                        count = 1, statusId = "endless"
+                                                        count = 1, statusId = "ambush"
+                                                    },
+                                                new StatusEffectStackData
+                                                    {
+                                                        count = 1, statusId = "heal immunity"
                                                     }
                                             },
                                         TriggerBuilders = new List<CharacterTriggerDataBuilder>
                                             {
                                                 new CharacterTriggerDataBuilder
                                                     {
-                                                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                                                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>",
+                                                        Trigger = CharacterTriggerData.Trigger.OnKill,
+                                                        Description = "Gain <nobr><b>Stealth</b> <b>{[effect0.status0.power]}</b>.</nobr>",
                                                         EffectBuilders = new List<CardEffectDataBuilder>
                                                             {
                                                                 new CardEffectDataBuilder
@@ -74,29 +78,8 @@ namespace GraveshackledClan_Main
                                                                                 new StatusEffectStackData
                                                                                     {
                                                                                         count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Soul
+                                                                                        statusId = VanillaStatusEffectIDs.Stealth
                                                                                     }
-                                                                            }
-                                                                    }
-                                                            }
-                                                    },
-                                                new CharacterTriggerDataBuilder
-                                                    {
-                                                        Trigger = CharacterTriggerData.Trigger.OnFeed,
-                                                        EffectBuilders = new List<CardEffectDataBuilder>
-                                                            {
-                                                                new CardEffectDataBuilder
-                                                                    {
-                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
-                                                                        TargetTeamType = Team.Type.Monsters,
-                                                                        ParamStatusEffects = new StatusEffectStackData[]
-                                                                            {
-                                                                                new StatusEffectStackData
-                                                                                    {
-                                                                                        count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Fuel
-                                                                                    },
                                                                             }
                                                                     }
                                                             }
@@ -106,7 +89,7 @@ namespace GraveshackledClan_Main
                             }
                     }
             };
-                cardcharnelslab.BuildAndRegister();
+            cardvilefigment.BuildAndRegister();
         }
     }
 }

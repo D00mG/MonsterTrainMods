@@ -16,7 +16,7 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitle = "Herald of Pestilence II",
+                UpgradeTitleKey = IDName + "_Title",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 5,
@@ -27,6 +27,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
+                        //Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>.",
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                                     {
@@ -39,7 +40,7 @@ namespace GraveshackledClan_Main
                                             {
                                                 new StatusEffectStackData
                                                 {
-                                                    count = 1,
+                                                    count = 2,
                                                     statusId = VanillaStatusEffectIDs.Soul
                                                 }
                                             }
@@ -49,7 +50,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnHit,
-                        DescriptionKey = IDName + "_Desc",
+                        //Description = "Apply <nobr><b>Frostbite {[effect0.status0.power]}</b></nobr> per Soul to enemy units.",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

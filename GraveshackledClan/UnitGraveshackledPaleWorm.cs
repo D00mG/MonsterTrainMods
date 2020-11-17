@@ -9,13 +9,13 @@ using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace GraveshackledClan_Main
 {
-    class UnitGraveshackledCharnelSlab
+    class UnitGraveshackledPaleWorm
     {
         public static void Make()
         {
-            CardDataBuilder cardcharnelslab = new CardDataBuilder
+            CardDataBuilder cardpaleworm = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 3,
                 Rarity = CollectableRarity.Common,
                 CardType = CardType.Monster,
                 ClanID = "GraveshackledClanDefine_ID",
@@ -25,9 +25,9 @@ namespace GraveshackledClan_Main
 //                        VanillaCardPoolIDs.MegaPool,
 // Replace this second MegaPool with the Clan Pool once it is made
                     },
-                CardID = "CardGraveshackledCharnelSlab_ID",
-                Name = "Charnel Slab",
-                AssetPath = "assets/CardArt/img_unit_charnel_slab.png",
+                CardID = "CardGraveshackledPaleWorm_ID",
+                Name = "Pale Worm",
+                AssetPath = "assets/CardArt/img_unit_pale_worm.png",
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -38,22 +38,18 @@ namespace GraveshackledClan_Main
                                 TargetMode = TargetMode.DropTargetCharacter,
                                 ParamCharacterDataBuilder = new CharacterDataBuilder
                                     {
-                                        CharacterID = "UnitGraveshackledCharnelSlab_ID",
-                                        Name = "Charnel Slab",
+                                        CharacterID = "UnitGraveshackledPaleWorm_ID",
+                                        Name = "Pale Worm",
                                         SubtypeKeys = new List<string> { SubtypeGraveshackledRevenant.Key },
-                                        Size = 1,
-                                        Health = 20,
+                                        Size = 2,
+                                        Health = 50,
                                         AttackDamage = 5,
-                                        AssetPath = "assets/UnitArt/img_character_CharnelSlab.png",
+                                        AssetPath = "assets/UnitArt/img_character_PaleWorm.png",
                                         StartingStatusEffects = new StatusEffectStackData[]
                                             {
                                                 new StatusEffectStackData
                                                     {
-                                                        count = 1, statusId = "inert"
-                                                    },
-                                                new StatusEffectStackData
-                                                    {
-                                                        count = 1, statusId = "endless"
+                                                        count = 5, statusId = "regen"
                                                     }
                                             },
                                         TriggerBuilders = new List<CharacterTriggerDataBuilder>
@@ -61,42 +57,21 @@ namespace GraveshackledClan_Main
                                                 new CharacterTriggerDataBuilder
                                                     {
                                                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                                                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>",
+                                                        Description = "Apply <nobr><b>Sap {[effect0.status0.power]}</b></nobr> to enemies.",
                                                         EffectBuilders = new List<CardEffectDataBuilder>
                                                             {
                                                                 new CardEffectDataBuilder
                                                                     {
                                                                         EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
-                                                                        TargetTeamType = Team.Type.Monsters,
+                                                                        TargetMode = TargetMode.Room,
+                                                                        TargetTeamType = Team.Type.Heroes,
                                                                         ParamStatusEffects = new StatusEffectStackData[]
                                                                             {
                                                                                 new StatusEffectStackData
                                                                                     {
                                                                                         count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Soul
+                                                                                        statusId = VanillaStatusEffectIDs.Sap
                                                                                     }
-                                                                            }
-                                                                    }
-                                                            }
-                                                    },
-                                                new CharacterTriggerDataBuilder
-                                                    {
-                                                        Trigger = CharacterTriggerData.Trigger.OnFeed,
-                                                        EffectBuilders = new List<CardEffectDataBuilder>
-                                                            {
-                                                                new CardEffectDataBuilder
-                                                                    {
-                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
-                                                                        TargetTeamType = Team.Type.Monsters,
-                                                                        ParamStatusEffects = new StatusEffectStackData[]
-                                                                            {
-                                                                                new StatusEffectStackData
-                                                                                    {
-                                                                                        count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Fuel
-                                                                                    },
                                                                             }
                                                                     }
                                                             }
@@ -106,7 +81,7 @@ namespace GraveshackledClan_Main
                             }
                     }
             };
-                cardcharnelslab.BuildAndRegister();
+            cardpaleworm.BuildAndRegister();
         }
     }
 }

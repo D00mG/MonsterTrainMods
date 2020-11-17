@@ -16,8 +16,8 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitle = "Herald of Famine",
-                UpgradeDescriptionKey = IDName + "_Desc",
+                UpgradeTitleKey = IDName + "_Title",
+                UpgradeDescription = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 10,
                 BonusHP = 15,
@@ -27,7 +27,7 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnHit,
-                        Description = "Apply <nobr><b>Sap {[effect0.status0.power]}</b></nobr> to enemy units.",
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

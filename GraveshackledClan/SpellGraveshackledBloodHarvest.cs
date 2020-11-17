@@ -30,14 +30,14 @@ namespace GraveshackledClan_Main
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateType = typeof(CardEffectHeal),
+                        EffectStateType = VanillaCardEffectTypes.CardEffectHeal,
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Monsters,
                         ParamInt = 3,
                     },
                     new CardEffectDataBuilder
                     {
-                        EffectStateType = typeof(CardEffectDamage),
+                        EffectStateType = VanillaCardEffectTypes.CardEffectDamage,
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Heroes,
                         ParamInt = 3,

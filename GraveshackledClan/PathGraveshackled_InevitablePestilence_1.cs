@@ -16,8 +16,8 @@ namespace GraveshackledClan_Main
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                UpgradeTitle = "Herald of Pestilence",
-                UpgradeDescriptionKey = IDName + "_Desc",
+                UpgradeTitleKey = IDName + "_Title",
+                UpgradeDescription = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 0,
                 BonusHP = 10,
@@ -27,7 +27,8 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>.",
+                        //Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>.",
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                                     {
                                         new CardEffectDataBuilder
@@ -49,7 +50,8 @@ namespace GraveshackledClan_Main
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnHit,
-                        Description = "Apply <nobr><b>Frostbite {[effect0.status0.power]}</b></nobr> per Soul to enemy units.",
+                        //Description = "Apply <nobr><b>Frostbite {[effect0.status0.power]}</b></nobr> per Soul to enemy units.",
+                        //DescriptionKey = IDName + "_Desc1",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
@@ -64,7 +66,7 @@ namespace GraveshackledClan_Main
                                     new StatusEffectStackData
                                     {
                                         statusId = VanillaStatusEffectIDs.Frostbite,
-                                        count = 1
+                                        count = 2
                                     }
                             }
                     }

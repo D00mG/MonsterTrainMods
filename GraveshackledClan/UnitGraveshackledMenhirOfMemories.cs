@@ -9,14 +9,14 @@ using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace GraveshackledClan_Main
 {
-    class UnitGraveshackledCharnelSlab
+    class UnitGraveshackledMenhirOfMemories
     {
         public static void Make()
         {
-            CardDataBuilder cardcharnelslab = new CardDataBuilder
+            CardDataBuilder cardmenhirofmemories = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Rarity = CollectableRarity.Rare,
                 CardType = CardType.Monster,
                 ClanID = "GraveshackledClanDefine_ID",
                 CardPoolIDs = new List<string>
@@ -25,9 +25,9 @@ namespace GraveshackledClan_Main
 //                        VanillaCardPoolIDs.MegaPool,
 // Replace this second MegaPool with the Clan Pool once it is made
                     },
-                CardID = "CardGraveshackledCharnelSlab_ID",
-                Name = "Charnel Slab",
-                AssetPath = "assets/CardArt/img_unit_charnel_slab.png",
+                CardID = "CardGraveshackledMenhirOfMemories_ID",
+                Name = "Menhir of Memories",
+                AssetPath = "assets/CardArt/img_unit_menhir_of_memories.png",
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -38,19 +38,15 @@ namespace GraveshackledClan_Main
                                 TargetMode = TargetMode.DropTargetCharacter,
                                 ParamCharacterDataBuilder = new CharacterDataBuilder
                                     {
-                                        CharacterID = "UnitGraveshackledCharnelSlab_ID",
-                                        Name = "Charnel Slab",
-                                        SubtypeKeys = new List<string> { SubtypeGraveshackledRevenant.Key },
+                                        CharacterID = "UnitGraveshackledMenhirOfMemories_ID",
+                                        Name = "Menhir of Memories",
+                                        SubtypeKeys = new List<string> { SubtypeGraveshackledMenhir.Key },
                                         Size = 1,
-                                        Health = 20,
-                                        AttackDamage = 5,
-                                        AssetPath = "assets/UnitArt/img_character_CharnelSlab.png",
+                                        Health = 5,
+                                        AttackDamage = 0,
+                                        AssetPath = "assets/UnitArt/img_character_MenhirOfMemories.png",
                                         StartingStatusEffects = new StatusEffectStackData[]
                                             {
-                                                new StatusEffectStackData
-                                                    {
-                                                        count = 1, statusId = "inert"
-                                                    },
                                                 new StatusEffectStackData
                                                     {
                                                         count = 1, statusId = "endless"
@@ -60,43 +56,24 @@ namespace GraveshackledClan_Main
                                             {
                                                 new CharacterTriggerDataBuilder
                                                     {
-                                                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
-                                                        Description = "Gain <nobr><b>Soul</b> <b>{[effect0.status0.power]}</b></nobr>",
+                                                        Trigger = CharacterTriggerData.Trigger.OnSpawn,
+                                                        Description = "Apply <nobr><b>Stealth</b> <b>{[effect0.status0.power]}</b></nobr> to allies.",
                                                         EffectBuilders = new List<CardEffectDataBuilder>
                                                             {
                                                                 new CardEffectDataBuilder
                                                                     {
                                                                         EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
+                                                                        TargetMode = TargetMode.Room,
                                                                         TargetTeamType = Team.Type.Monsters,
+                                                                        // Figure out how to filter self as target or, if that fails, filter out mehir subtypes
+                                                                        // TargetModeStatusEffectsFilter = new string[] { VanillaStatusEffectIDs.Inert },
                                                                         ParamStatusEffects = new StatusEffectStackData[]
                                                                             {
                                                                                 new StatusEffectStackData
                                                                                     {
                                                                                         count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Soul
+                                                                                        statusId = VanillaStatusEffectIDs.Stealth
                                                                                     }
-                                                                            }
-                                                                    }
-                                                            }
-                                                    },
-                                                new CharacterTriggerDataBuilder
-                                                    {
-                                                        Trigger = CharacterTriggerData.Trigger.OnFeed,
-                                                        EffectBuilders = new List<CardEffectDataBuilder>
-                                                            {
-                                                                new CardEffectDataBuilder
-                                                                    {
-                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
-                                                                        TargetTeamType = Team.Type.Monsters,
-                                                                        ParamStatusEffects = new StatusEffectStackData[]
-                                                                            {
-                                                                                new StatusEffectStackData
-                                                                                    {
-                                                                                        count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Fuel
-                                                                                    },
                                                                             }
                                                                     }
                                                             }
@@ -106,7 +83,7 @@ namespace GraveshackledClan_Main
                             }
                     }
             };
-                cardcharnelslab.BuildAndRegister();
+            cardmenhirofmemories.BuildAndRegister();
         }
     }
 }

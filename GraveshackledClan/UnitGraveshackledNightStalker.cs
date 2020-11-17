@@ -12,11 +12,11 @@ namespace GraveshackledClan_Main
 {
     class UnitGraveshackledNightStalker
     {
-        CardData spawnCardData = ProviderManager.SaveManager.GetAllGameData().FindCardData("CardGraveshackledWretchedSpawn_ID");
-        CharacterData spawnUnitData = spawnCardData.GetSpawnCharacterData();
         public static void Make()
         {
-            CardDataBuilder card = new CardDataBuilder
+            CardData spawnCardData = ProviderManager.SaveManager.GetAllGameData().FindCardData("CardGraveshackledWretchedSpawn_ID");
+            CharacterData spawnUnitData = spawnCardData.GetSpawnCharacterData();
+            CardDataBuilder cardnightstalker = new CardDataBuilder
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Common,
@@ -44,7 +44,7 @@ namespace GraveshackledClan_Main
                                         CharacterID = "UnitGraveshackledNightStalker_ID",
                                         Name = "Night Stalker",
                                         SubtypeKeys = new List<string> { SubtypeGraveshackledRevenant.Key },
-                                        Size = 1,
+                                        Size = 2,
                                         Health = 20,
                                         AttackDamage = 5,
                                         AssetPath = "assets/UnitArt/img_character_NightStalker.png",
@@ -53,28 +53,21 @@ namespace GraveshackledClan_Main
                                                 new CharacterTriggerDataBuilder
                                                     {
                                                         Trigger = CharacterTriggerData.Trigger.OnAttacking,
-                                                        Description = "Gain <nobr><b>Soul {[effect0.status0.power]}.</b></nobr>",
+                                                        Description = "Gain <nobr>+{[effect0.power]} [attack].</nobr>",
                                                         EffectBuilders = new List<CardEffectDataBuilder>
                                                             {
                                                                 new CardEffectDataBuilder
-                                                                    {
-                                                                        EffectStateType = VanillaCardEffectTypes.CardEffectAddStatusEffect,
-                                                                        TargetMode = TargetMode.Self,
-                                                                        TargetTeamType = Team.Type.Monsters,
-                                                                        ParamStatusEffects = new StatusEffectStackData[]
-                                                                            {
-                                                                                new StatusEffectStackData
-                                                                                    {
-                                                                                        count = 1,
-                                                                                        statusId = VanillaStatusEffectIDs.Soul
-                                                                                    }
-                                                                            }
-                                                                    }
+                                                                {
+                                                                    EffectStateType = VanillaCardEffectTypes.CardEffectBuffDamage,
+                                                                    TargetMode = TargetMode.Self,
+                                                                    ParamInt = 2,
+                                                                    TargetTeamType = Team.Type.Monsters
+                                                                }
                                                             }
                                                     },
                                                 new CharacterTriggerDataBuilder
                                                     {
-                                                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                                                        Trigger = CharacterTriggerData.Trigger.OnKill,
                                                         EffectBuilders = new List<CardEffectDataBuilder>
                                                             {
                                                                 new CardEffectDataBuilder
@@ -85,13 +78,14 @@ namespace GraveshackledClan_Main
                                                                         ParamInt = 1,
                                                                         ParamCharacterData = spawnUnitData
                                                                     }
+                                                                // Wanted this to trigger off a collected Soul threshold. Will try again another time with a custom trigger.
                                                                 //,
                                                                 //new CardEffectDataBuilder
-                                                                //    {
-                                                                //        EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold,
-                                                                //        TargetMode = TargetMode.Self,
-                                                                //        TargetTeamType = Team.Type.Monsters,
-                                                                //        ParamStatusEffects = new StatusEffectStackData[]
+                                                                //{
+                                                                //    EffectStateType = VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold,
+                                                                //    TargetMode = TargetMode.Self,
+                                                                //    TargetTeamType = Team.Type.Monsters,
+                                                                //    ParamStatusEffects = new StatusEffectStackData[]
                                                                 //            {
                                                                 //                new StatusEffectStackData
                                                                 //                    {
@@ -99,7 +93,7 @@ namespace GraveshackledClan_Main
                                                                 //                        statusId = VanillaStatusEffectIDs.Soul
                                                                 //                    },
                                                                 //            }
-                                                                //    }
+                                                                //}
                                                             }
                                                     }
                                             }
@@ -107,7 +101,7 @@ namespace GraveshackledClan_Main
                             }
                     }
             };
-            card.BuildAndRegister();
+            cardnightstalker.BuildAndRegister();
         }
     }
 }

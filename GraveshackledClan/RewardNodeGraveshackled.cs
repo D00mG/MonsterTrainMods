@@ -16,6 +16,16 @@ namespace GraveshackledClan_Main
             var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(cardPool);
             // Starter cards don't work here.
             cardDataList.Add(CustomCardManager.GetCardDataByID("SpellGraveshackledBloodHarvest_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledAberrantColossus_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledVileFigment_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledFrightShade_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledWretchedSpawn_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledBladeSpecter_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledPaleWorm_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledDreamWraith_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledSeaOfMaggots_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledMenhirOfSouls_ID"));
+            cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledMenhirOfMemories_ID"));
             cardDataList.Add(CustomCardManager.GetCardDataByID("CardGraveshackledCharnelSlab_ID"));
 
             new RewardNodeDataBuilder()
